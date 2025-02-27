@@ -1,0 +1,88 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://example.com/schema.student.json",
+    "title": "Membership",
+    "description": "Define a membership entity",
+    "Membership":{
+        "type": "object",
+        "properties": {
+            "LastName": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 20
+            },
+            "GivenName": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 20
+            },
+            "MiddleName": {
+                "type": ["string", "null"]
+            }
+        },
+        "Birthdate": {
+        "type": "object",
+        "properties": {
+            "Year": {
+            "type": "integer",
+            "exclusiveMinimum": 1989,
+            "exclusiveMaximum": 2026
+            },
+            "Month": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "exclusiveMaximum": 13
+            },
+            "Day": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "exclusiveMaximum": 32
+            }
+        },
+        "required": ["Year", "Month", "Day"]
+        },
+        "Gender":{
+            "enum": ["M", "F"]
+        },
+        "ContactDetails":{
+            "type": "object",
+            "properties":{
+                "MobileNumber":{
+                    "type": "string",
+                    "minLength": 0,
+                    "maxLength": 11
+                },
+                "EmailAddress":{
+                    "type": "string"
+                }
+            }
+        },
+        "Interests": {
+        "type": "array",
+        "items": {
+            "type": "string"
+        },
+        "minItems": 1
+        },
+        "Platforms": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "properties": {
+            "Platform": {
+                "type": "string",
+                "enum": ["PC", "Playstation", "XBOX"]
+            },
+            "Enabled":{
+                "type": "boolen"
+            },
+            "required": ["Platform", "Enabled"]   
+            },
+            "minItems": 1
+        }
+        },
+        "required": ["LastName", "GiveName", "Birthdate", "Gender", "ContactDetails", "Interest", "Platforms" ]
+
+
+    }
+}
